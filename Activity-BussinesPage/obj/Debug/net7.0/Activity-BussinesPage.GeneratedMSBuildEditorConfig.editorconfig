@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Activity_BussinesPage
+build_property.RootNamespace = Activity_BussinesPage
+build_property.ProjectDir = Z:\L23Y16W37\Activity1\Activity-BussinesPage\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = Z:\L23Y16W37\Activity1\Activity-BussinesPage
+build_property._RazorSourceGeneratorDebug = 
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Pages/ContactUs.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdFVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-fafvw31ixn
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gv3oc1b7oq
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Pages/OurWorks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3VyV29ya3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y54iy97bkg
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Shared/NavBar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdkJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-vw8r8z5i9t
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Shared/SiteFooter.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFNpdGVGb290ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4xvdshwqaz
+
+[Z:/L23Y16W37/Activity1/Activity-BussinesPage/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
