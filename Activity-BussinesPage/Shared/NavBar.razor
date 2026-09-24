@@ -1,0 +1,36 @@
+@using Microsoft.AspNetCore.Components
+@inject NavigationManager Nav
+
+<header class="nav">
+    <div class="container nav-inner">
+        <a class="brand" href="/">
+            <span class="brand-dot"></span>
+            JusRight <span class="brand-accent">Hydro</span>
+        </a>
+
+        <nav class="nav-links">
+            <a class="@LinkClass("/")" href="/">Home</a>
+            <a class="@LinkClass("/our-works")" href="/our-works">Our Works</a>
+            <a class="@LinkClass("/contact-us")" href="/contact-us">Contact Us</a>
+        </nav>
+
+        <div class="nav-actions">
+            <span class="nav-note">Fresh Harvest Delivery</span>
+            <a class="btn btn-primary" href="/shop">Shop Greens</a>
+        </div>
+    </div>
+</header>
+
+@code {
+    private string CurrentPath
+    {
+        get
+        {
+            var relative = "/" + Nav.ToBaseRelativePath(Nav.Uri).Split('?')[0].TrimEnd('/');
+            return relative == "" ? "/" : relative;
+        }
+    }
+
+    private string LinkClass(string path) =>
+        CurrentPath == path ? "nav-link active" : "nav-link";
+}
