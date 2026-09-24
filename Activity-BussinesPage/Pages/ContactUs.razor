@@ -3,35 +3,35 @@
 
 <PageTitle>JusRight Hydro — Contact Us</PageTitle>
 
-<section class="contact-hero">
-    <div class="container contact-grid">
-        <div class="contact-form-card">
-            <h2>Connect with our growers</h2>
-            <p class="contact-intro">
+<section class="bg-cream pt-18 pb-22">
+    <div class="container grid items-start gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-14">
+        <div class="rounded-card border border-line bg-white px-10 py-11 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+            <h2 class="mb-3 text-[2.1rem]">Connect with our growers</h2>
+            <p class="mb-8 max-w-[50ch] text-[0.96rem] leading-relaxed">
                 Have culinary questions, subscription requests, or want to buy wholesale? Send us
                 a quick note below.
             </p>
 
             <EditForm Model="@formModel" OnValidSubmit="HandleSubmit">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="name">Your Name</label>
-                        <InputText id="name" @bind-Value="formModel.Name" placeholder="Alice Green" />
+                <div class="mb-5 grid gap-5 lg:grid-cols-2">
+                    <div>
+                        <label class="field-label" for="name">Your Name</label>
+                        <InputText class="field-input" id="name" @bind-Value="formModel.Name" placeholder="Alice Green" />
                     </div>
-                    <div class="form-field">
-                        <label for="email">Email Address</label>
-                        <InputText id="email" @bind-Value="formModel.Email" placeholder="alice@growth.com" />
+                    <div>
+                        <label class="field-label" for="email">Email Address</label>
+                        <InputText class="field-input" id="email" @bind-Value="formModel.Email" placeholder="alice@growth.com" />
                     </div>
                 </div>
 
-                <div class="form-field">
-                    <label for="subject">Subject / Culinary Purpose</label>
-                    <InputText id="subject" @bind-Value="formModel.Subject" placeholder="E.g., Restaurant supply, personal sub" />
+                <div class="mb-5">
+                    <label class="field-label" for="subject">Subject / Culinary Purpose</label>
+                    <InputText class="field-input" id="subject" @bind-Value="formModel.Subject" placeholder="E.g., Restaurant supply, personal sub" />
                 </div>
 
-                <div class="form-field">
-                    <label for="message">Your Inquiry Details</label>
-                    <InputTextArea id="message" @bind-Value="formModel.Message" rows="5" placeholder="Type your detailed culinary requests or general message..." />
+                <div class="mb-5">
+                    <label class="field-label" for="message">Your Inquiry Details</label>
+                    <InputTextArea class="field-input resize-y" id="message" @bind-Value="formModel.Message" rows="5" placeholder="Type your detailed culinary requests or general message..." />
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-block">Send Greenhouse Inquiry</button>
@@ -39,40 +39,40 @@
 
             @if (submitted)
             {
-                <p class="form-success">Thanks — your inquiry has been sent to our growers.</p>
+                <p class="mt-5 text-sm font-semibold text-leaf">Thanks — your inquiry has been sent to our growers.</p>
             }
         </div>
 
-        <div class="contact-info">
+        <div>
             <p class="eyebrow">Direct Connections</p>
-            <h2>We welcome <span class="accent">visits</span> &amp; audits</h2>
-            <p class="info-intro">
+            <h2 class="mt-1.5 mb-5 text-[2.6rem] leading-[1.18]">We welcome <span class="italic text-leaf">visits</span> &amp; audits</h2>
+            <p class="mb-9 max-w-[48ch] leading-[1.65]">
                 Our botanical lab believes in complete supply transparency. Reach out to arrange
                 a formal greenhouse walk or join our weekend harvest market.
             </p>
 
-            <div class="info-row">
-                <div class="info-icon">
+            <div class="mb-6 flex items-center gap-5">
+                <div class="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-sage text-fern">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 </div>
                 <div>
-                    <div class="info-label">Grower Hotline</div>
-                    <div class="info-value">(555) 392-4876</div>
+                    <div class="mb-1 text-[0.82rem] text-ink-muted">Grower Hotline</div>
+                    <div class="text-[1.05rem] font-bold text-ink">(555) 392-4876</div>
                 </div>
             </div>
-            <div class="info-row">
-                <div class="info-icon">
+            <div class="mb-6 flex items-center gap-5">
+                <div class="flex size-[46px] shrink-0 items-center justify-center rounded-full bg-sage text-fern">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 </div>
                 <div>
-                    <div class="info-label">General / Wholesale Inquiry</div>
-                    <div class="info-value">grow@jusrighthydro.com</div>
+                    <div class="mb-1 text-[0.82rem] text-ink-muted">General / Wholesale Inquiry</div>
+                    <div class="text-[1.05rem] font-bold text-ink">grow@jusrighthydro.com</div>
                 </div>
             </div>
 
-            <div class="map-card">
-                <img src="images/map-placeholder.jpg" alt="Map showing JusRight Hydro's location" />
-                <p class="map-caption">
+            <div class="mt-8 overflow-hidden rounded-tile border border-line bg-sage">
+                <img class="block h-auto w-full" src="images/map-placeholder.jpg" alt="Map showing JusRight Hydro's location" />
+                <p class="px-5 py-3.5 text-[0.86rem] text-ink">
                     Located right in Sector 4's Glasshouse Quarter — Plenty of visitor parking.
                 </p>
             </div>
@@ -80,15 +80,15 @@
     </div>
 </section>
 
-<section class="faq">
+<section class="bg-white py-24">
     <div class="container">
-        <h2 class="center">Botanical Answers &amp; Shipping Questions</h2>
-        <div class="faq-grid">
+        <h2 class="mb-14 text-center text-[2.3rem]">Botanical Answers &amp; Shipping Questions</h2>
+        <div class="grid gap-10 lg:gap-x-14 lg:gap-y-11 lg:grid-cols-2">
             @foreach (var item in faqs)
             {
-                <div class="faq-item">
-                    <h4>@item.Question</h4>
-                    <p>@item.Answer</p>
+                <div>
+                    <h4 class="mb-2.5 font-sans text-[1.15rem] font-bold">@item.Question</h4>
+                    <p class="text-[0.95rem] leading-relaxed">@item.Answer</p>
                 </div>
             }
         </div>

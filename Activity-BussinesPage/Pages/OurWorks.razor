@@ -2,28 +2,28 @@
 
 <PageTitle>JusRight Hydro — Our Works</PageTitle>
 
-<section class="works-hero">
+<section class="bg-cream pt-20 pb-24">
     <div class="container">
         <p class="eyebrow">Greenhouse Portfolios &amp; Collaborations</p>
-        <h1>Hydroponic methods, <span class="accent">realized harvests</span></h1>
-        <p class="works-desc">
+        <h1 class="mt-2.5 mb-6 text-[2.4rem] leading-[1.15] lg:text-[3.4rem]">Hydroponic methods, <span class="text-leaf not-italic">realized harvests</span></h1>
+        <p class="mb-14 max-w-[62ch] text-[1.05rem] leading-[1.65] text-ink-muted">
             Take a look inside our specialized growing installations. We supply world-class
             restaurateurs, commercial kitchens, and community markets with precise botanical
             consistency.
         </p>
 
-        <div class="works-grid">
+        <div class="grid gap-9 lg:grid-cols-2">
             @foreach (var work in works)
             {
-                <div class="work-card">
-                    <img src="@work.ImageUrl" alt="@work.ImageAlt" />
-                    <div class="work-card-body">
-                        <div class="work-card-top">
-                            <h3>@work.Title</h3>
-                            <span class="tag-outline">@work.Badge</span>
+                <div class="overflow-hidden rounded-card border border-line bg-white shadow-[0_4px_16px_rgba(0,0,0,0.03)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.05)]">
+                    <img class="h-[315px] w-full object-cover" src="@work.ImageUrl" alt="@work.ImageAlt" />
+                    <div class="p-9">
+                        <div class="mb-2.5 flex items-center justify-between gap-4">
+                            <h3 class="text-[1.75rem]">@work.Title</h3>
+                            <span class="text-[0.72rem] font-bold tracking-[0.06em] whitespace-nowrap text-fern uppercase">@work.Badge</span>
                         </div>
-                        <p class="work-subtitle">@work.Subtitle</p>
-                        <p>@work.Description</p>
+                        <p class="mb-3.5 text-[1.02rem] font-semibold text-ink">@work.Subtitle</p>
+                        <p class="text-[0.96rem] leading-relaxed">@work.Description</p>
                     </div>
                 </div>
             }
@@ -31,37 +31,37 @@
     </div>
 </section>
 
-<section class="process">
+<section class="bg-white py-24">
     <div class="container">
-        <p class="eyebrow center">Closed-Loop Hydroscience</p>
-        <h2 class="center">How we grow without compromise</h2>
+        <p class="eyebrow text-center">Closed-Loop Hydroscience</p>
+        <h2 class="mx-auto mt-2 mb-15 text-center text-[2.5rem]">How we grow without compromise</h2>
 
-        <div class="process-grid">
+        <div class="grid gap-12 lg:grid-cols-2 min-[1151px]:grid-cols-4">
             @foreach (var step in steps)
             {
-                <div class="process-step">
-                    <div class="step-num">@step.Number</div>
-                    <h4>@step.Title</h4>
-                    <p>@step.Description</p>
+                <div>
+                    <div class="mb-4 font-serif text-[2.8rem] leading-none text-clay">@step.Number</div>
+                    <h4 class="mb-3 font-sans text-[1.15rem] font-bold">@step.Title</h4>
+                    <p class="text-[0.95rem] leading-relaxed">@step.Description</p>
                 </div>
             }
         </div>
     </div>
 </section>
 
-<section class="stats-bar">
-    <div class="container stats-grid">
+<section class="bg-sage py-20">
+    <div class="container grid gap-8 lg:grid-cols-3">
         <div>
             <p class="eyebrow">Annual Greens Output</p>
-            <div class="stat-big">45,000+ lbs</div>
+            <div class="mt-1.5 font-serif text-[3.4rem] leading-[1.1] text-forest">45,000+ lbs</div>
         </div>
         <div>
             <p class="eyebrow">Active Chef Partners</p>
-            <div class="stat-big">28 Venues</div>
+            <div class="mt-1.5 font-serif text-[3.4rem] leading-[1.1] text-forest">28 Venues</div>
         </div>
         <div>
             <p class="eyebrow">Pesticides Used</p>
-            <div class="stat-big">0.00%</div>
+            <div class="mt-1.5 font-serif text-[3.4rem] leading-[1.1] text-forest">0.00%</div>
         </div>
     </div>
 </section>

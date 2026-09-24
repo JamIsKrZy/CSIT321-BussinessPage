@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@source "../**/*.razor";
+@source "../**/*.cshtml";
+
+/*
+  Colors and radii point at the CSS variables your site.css already defines,
+  so nothing changes visually while you migrate. When you delete site.css,
+  replace each var(...) below with the literal value from its :root block.
+*/
+@theme inline {
+    --color-cream: var(--color-bg);
+    --color-sage: var(--color-bg-alt);
+    --color-forest: var(--color-green-dark);
+    --color-fern: var(--color-green-mid);
+    --color-leaf: var(--color-green-accent);
+    --color-clay: var(--color-terracotta);
+    --color-ink: var(--color-text);
+    --color-ink-muted: var(--color-text-muted);
+    --color-line: var(--color-border);
+    --radius-card: var(--radius-lg);
+    --radius-tile: var(--radius-md);
+}
+
+@theme {
+    --font-serif: "Newsreader", Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+    /* Your layouts stack at 960px, so make Tailwind's `lg:` match. */
+    --breakpoint-lg: 60rem;
+}
+
+/* Centered page wrapper (replaces .container from site.css). */
+@utility container {
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+}
+
+@layer base {
+    body {
+        @apply bg-cream font-sans text-ink antialiased;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-serif text-forest;
+    }
+}
+
+/*
+  Shared pieces used on many pages. Values are my best match for your old
+  .btn / .eyebrow styles, which I couldn't see: tweak them here once.
+*/
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center rounded-full px-7 py-3 text-[0.95rem] font-semibold transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply bg-fern text-white hover:bg-forest;
+    }
+
+    .btn-outline {
+        @apply border border-forest text-forest hover:bg-forest hover:text-white;
+    }
+
+    .btn-block {
+        @apply w-full;
+    }
+
+    .eyebrow {
+        @apply text-xs font-bold uppercase tracking-[0.12em] text-fern;
+    }
+
+    .field-label {
+        @apply mb-1.5 block text-sm font-semibold text-forest;
+    }
+
+    .field-input {
+        @apply w-full rounded-tile border border-line bg-cream px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink-muted/60 focus:border-leaf focus:ring-2 focus:ring-leaf/20 focus:outline-none;
+    }
+}
