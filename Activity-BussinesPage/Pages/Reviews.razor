@@ -1,0 +1,134 @@
+@page "/reviews"
+@using Microsoft.AspNetCore.Components.Forms
+
+<PageTitle>JusRight Hydro — Reviews</PageTitle>
+
+<section class="bg-cream pt-18 pb-22">
+    <div class="container max-w-6xl">
+        <div class="mb-10 text-center">
+            <p class="eyebrow">Customer Feedback</p>
+            <h1 class="mt-2 text-[2.3rem] leading-tight lg:text-[3.2rem]">What our customers say about <span class="text-leaf">JusRight Hydro</span></h1>
+            <p class="mx-auto mt-4 max-w-2xl text-[1.02rem] leading-relaxed text-ink-muted">
+                Real experiences from homes, cafés, and chefs who rely on our living greens,
+                fast harvests, and cleaner growing practices.
+            </p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-[1.05fr_1.3fr]">
+            <div class="rounded-card border border-line bg-white p-8 shadow-[0_8px_28px_rgba(17,29,22,0.04)]">
+                <div class="mb-6">
+                    <h2 class="mb-2 text-[1.7rem]">Leave a review</h2>
+                    <p class="text-sm text-ink-muted">Share your experience with our business.</p>
+                </div>
+
+                <EditForm Model="@formModel" OnValidSubmit="HandleSubmit">
+                    <div class="mb-5">
+                        <label class="field-label" for="reviewerName">Your name</label>
+                        <InputText class="field-input" id="reviewerName" @bind-Value="formModel.Name" placeholder="Ava Thompson" />
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="field-label">Your rating</label>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach (var value in ratingOptions)
+                            {
+                                <button
+                                    type="button"
+                                    class="flex h-11 w-11 items-center justify-center rounded-full border text-lg transition @(formModel.Rating == value ? "border-leaf bg-sage text-forest shadow-sm" : "border-line bg-white text-slate-300 hover:border-fern hover:text-amber-400")"
+                                    @onclick="() => formModel.Rating = value"
+                                    aria-label="Rate @value out of 5"
+                                >
+                                    ★
+                                </button>
+                            }
+                        </div>
+                        <p class="mt-2 text-sm text-ink-muted">Selected rating: @formModel.Rating/5</p>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="field-label" for="reviewComment">Your comment</label>
+                        <InputTextArea class="field-input resize-y" id="reviewComment" rows="5" @bind-Value="formModel.Comment" placeholder="Tell us about the service, product quality, delivery, or overall experience..." />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit review</button>
+                </EditForm>
+
+                @if (!string.IsNullOrWhiteSpace(successMessage))
+                {
+                    <p class="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                        @successMessage
+                    </p>
+                }
+            </div>
+
+            <div class="rounded-card border border-line bg-white p-8 shadow-[0_8px_28px_rgba(17,29,22,0.04)]">
+                <div class="mb-6 flex items-center justify-between gap-4">
+                    <h2 class="text-[1.7rem]">Recent reviews</h2>
+                    <span class="rounded-full bg-sage px-3 py-1.5 text-xs font-bold tracking-[0.08em] text-fern uppercase">@reviews.Count Reviews</span>
+                </div>
+
+                <div class="space-y-5">
+                    @foreach (var review in reviews)
+                    {
+                        <article class="rounded-2xl border border-line bg-[#fafcf9] p-5">
+                            <div class="mb-3 flex items-center justify-between gap-4">
+                                <div>
+                                    <h3 class="text-[1.05rem] font-bold text-ink">@review.Name</h3>
+                                    <p class="text-xs text-ink-muted">@review.Date</p>
+                                </div>
+                                <div class="flex items-center gap-1 text-base" aria-label="Rated @review.Rating out of 5 stars">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        <span class="@(i <= review.Rating ? "text-amber-400" : "text-slate-300")">★</span>
+                                    }
+                                </div>
+                            </div>
+
+                            <p class="text-[0.96rem] leading-relaxed text-ink-muted">@review.Comment</p>
+                        </article>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private ReviewFormModel formModel = new();
+    private string successMessage = string.Empty;
+    private readonly List<ReviewItem> reviews = new()
+    {
+        new("Maya R.", 5, "The greens arrived crisp and beautifully packed. I could tell they were harvested the same day and the flavor was noticeably fresh.", "Sep 15, 2026"),
+        new("Daniel T.", 4, "Fast delivery and consistent quality. I especially liked the basil and butterhead lettuce for my café salads.", "Sep 10, 2026"),
+        new("Nia W.", 5, "Great customer service and a really thoughtful growing process. The produce feels premium and lasts much longer than supermarket greens.", "Sep 02, 2026")
+    };
+
+    private readonly int[] ratingOptions = { 1, 2, 3, 4, 5 };
+
+    private void HandleSubmit()
+    {
+        if (string.IsNullOrWhiteSpace(formModel.Name) || string.IsNullOrWhiteSpace(formModel.Comment))
+        {
+            return;
+        }
+
+        reviews.Insert(0, new ReviewItem(
+            formModel.Name.Trim(),
+            formModel.Rating,
+            formModel.Comment.Trim(),
+            DateTime.Now.ToString("MMM dd, yyyy")
+        ));
+
+        successMessage = "Thanks for your review! Your feedback has been added to the list.";
+        formModel = new ReviewFormModel();
+    }
+
+    private class ReviewFormModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public int Rating { get; set; } = 5;
+        public string Comment { get; set; } = string.Empty;
+    }
+
+    private record ReviewItem(string Name, int Rating, string Comment, string Date);
+}
