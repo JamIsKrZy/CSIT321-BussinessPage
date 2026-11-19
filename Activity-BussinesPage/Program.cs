@@ -5,6 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
+var url = builder.Configuration["Supabase:Url"]!;
+var key = builder.Configuration["Supabase:Key"]!;
+var supabase = new Supabase.Client(url, key,
+    new Supabase.SupabaseOptions { AutoConnectRealtime = false });
+await supabase.InitializeAsync();
+builder.Services.AddSingleton(supabase);
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -22,4 +29,4 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
-app.Run();
+await app.RunAsync();
