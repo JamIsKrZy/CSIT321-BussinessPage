@@ -1,35 +1,49 @@
 -- ===================================================
--- Supabase Schema for Products Table
+-- Supabase Schema & Security Policies for Products Table
 -- ===================================================
 
-create table if not exists products (
-    id bigint primary key generated always as identity,
-    name text not null,
-    price numeric not null default 0,
-    deleted_at timestamp with time zone default null
+create table if not exists public.products (
+  id bigint generated always as identity primary key,
+  name text not null,
+  price numeric(10,2) not null default 0 check (price >= 0),
+  deleted_at timestamptz,                         -- for soft delete
+  created_at timestamptz not null default now()
 );
 
--- Enable Row Level Security (RLS)
-alter table products enable row level security;
+-- Index on name for fast lookups (habit 1)
+create index if not exists products_name_idx on public.products (name);
 
--- Policy: Allow read access to anon
-create policy "Allow select for anon"
-    on products
-    for select
-    to anon
-    using (true);
+-- Grant privileges to anon role (lock 1)
+grant select, insert, update, delete on public.products to anon;
 
--- Policy: Allow insert access to anon
-create policy "Allow insert for anon"
-    on products
-    for insert
-    to anon
-    with check (true);
+-- Enable Row Level Security (lock 2)
+alter table public.products enable row level security;
 
--- Policy: Allow update access to anon (needed for price raise & soft delete)
-create policy "Allow update for anon"
-    on products
-    for update
-    to anon
-    using (true)
-    with check (true);
+-- 1. READ POLICY: Allow anon to read products
+drop policy if exists "read_all" on public.products;
+create policy "read_all" on public.products
+  for select
+  to anon
+  using (true);
+
+-- 2. INSERT POLICY: Allow anon to insert new products (Required for Add)
+drop policy if exists "insert_all" on public.products;
+create policy "insert_all" on public.products
+  for insert
+  to anon
+  with check (true);
+
+-- 3. UPDATE POLICY: Allow anon to update products (Required for +10 and Soft Delete)
+drop policy if exists "update_all" on public.products;
+create policy "update_all" on public.products
+  for update
+  to anon
+  using (true)
+  with check (true);
+
+-- 4. DELETE POLICY: Allow anon to delete products
+drop policy if exists "delete_all" on public.products;
+create policy "delete_all" on public.products
+  for delete
+  to anon
+  using (true);
